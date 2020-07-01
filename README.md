@@ -1,5 +1,6 @@
-# Menime
-Streaming anime mostly without ad.
+![Alt text](https://github.com/SatuSembilanDua/jstream/blob/master/assets/img/icons.png?raw=true "JSTREAM")
+# JStream
+Streaming video without ad.
 
 ## Requirement
 * [PHP 5.5](http://php.net/downloads.php) - or later
