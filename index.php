@@ -11,8 +11,8 @@ unset($file[0], $file[1]);
 $title = "JStream ";
 $inc = '';
 $og_desc = 'JStream Adalah Website Nonton Film.'; 
-$og_img = 'jstream.herokuapp.com/assets/img/logo.png'; 
-$og_url = "https://jstream.herokuapp.com/index.php";
+$og_img = 'jstreams.herokuapp.com/assets/img/logo.png'; 
+$og_url = "https://jstreams.herokuapp.com/index.php";
 if(isset($_GET['page'])){
 	$q = $_GET['page'];
 	$p = $q.".php";
