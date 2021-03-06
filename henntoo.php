@@ -97,6 +97,12 @@
 	    color: #727579;
 	    font-weight: 400;
 	}
+	
+	@media (min-width: 320px) and (max-width: 480px) {
+		.taxindex li {
+		    width: 50%;
+		}
+	}
 </style>
 <?php
 
