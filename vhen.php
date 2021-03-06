@@ -61,12 +61,6 @@
 </style>
 <?php
 
-
-
-
-
-
-
 ?>
 <h2><?= $hen['title']; ?></h2>
 <div class="row hidden-xs">
@@ -95,3 +89,15 @@
 	<?php endforeach;?>
 	</tbody>
 </table>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("a[rel='tag']").each(function(i, v){
+			var link = $(v).attr("href");
+			$.get("func.php?e_url="+link, function(data, status){
+			    console.log("Data: " + data + "\nStatus: " + status);
+				$(v).attr("href","index.php?page=hento&g="+data);
+			});
+		});
+	});
+</script>

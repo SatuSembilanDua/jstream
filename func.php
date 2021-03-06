@@ -10,6 +10,10 @@ function d_url($s) {
 	return base64_decode(str_pad(strtr($s, '-_', '+/'), strlen($s) % 4, '=', STR_PAD_RIGHT));
 }
 
+if(isset($_GET['e_url'])){
+	echo e_url($_GET['e_url']);
+}
+
 function isMobile() {
     return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
@@ -100,7 +104,25 @@ function get_vid_real($url){
 		$video = htmlentities($iframe);
 	}
 
-	$ret = ["title" => $title, "video" => $video];
+	$nav_list = [];
+	foreach ($html->find(".bignav") as $nav) {
+		foreach ($nav->find(".nvs") as $nvs) {
+			if($nvs->find("a",0)){
+				$nav_list[] = array(
+									"link" => $nvs->find("a",0)->href,
+									"text" => $nvs->find("a",0)->text(),
+									);
+			}else{
+				$nav_list[] = array(
+									"link" => "",
+									"text" => $nvs->find("span",0)->text(),
+									);
+			}
+			
+		}
+	}
+
+	$ret = ["title" => $title, "video" => $video, "nav_list" => $nav_list];
 	return $ret;
 }
 

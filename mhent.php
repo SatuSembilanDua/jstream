@@ -51,14 +51,14 @@ function lista($url){
 	$list_episode = array();
 
 	foreach ($html->find(".listupd") as $lst) {
-		foreach ($lst->find("article.bs") as $bs) {
-			$judul = $bs->find(".tt>h2",0)->text();
+		foreach ($lst->find("div.bs") as $bs) {
+			$judul = $bs->find(".bsx>a>.tt",0)->text();
 			$img = $bs->find("img",0)->src;
 			$a = $bs->find("a",0)->href;
 			$list_episode[] = array(
 									"judul" => $judul,
 									"img" => $img,
-									"link" => "index.php?page=vhen&b=".e_url($a),
+									"link" => "index.php?page=fhen2&jd=".$_GET['jd']."&ga=".$_GET['g']."&g=".e_url($a),
 									);
 									
 		}
@@ -66,24 +66,20 @@ function lista($url){
 	$list_pagin = [];
 	$html = $dom->load($data, true, true);
 	foreach ($html->find(".pagination") as $page) {
-		if($page->find(".current",0)){
-
-			$current = $page->find(".current",0)->text();
-			foreach ($page->find(".page-numbers") as $num) {
-				if($num->href){
-					$list_pagin[] = array("type" => $num->href, "num" => $num->text());	
+		$current = $page->find(".current",0)->text();
+		foreach ($page->find(".page-numbers") as $num) {
+			if($num->href){
+				$list_pagin[] = array("type" => $num->href, "num" => $num->text());	
+			}else{
+				if($num->text()==$current){
+					$list_pagin[] = array("type" => "current", "num" => $num->text());	
 				}else{
-					if($num->text()==$current){
-						$list_pagin[] = array("type" => "current", "num" => $num->text());	
-					}else{
-						$list_pagin[] = array("type" => "disabled", "num" => $num->text());	
-					}
+					$list_pagin[] = array("type" => "disabled", "num" => $num->text());	
 				}
-				
 			}
+			
 		}
 	}
-	$main_judul = "";
 	foreach ($html->find(".postbody") as $postbody) {
 		foreach ($postbody->find(".bixbox") as $bixbox) {
 			foreach ($postbody->find(".releases") as $releases) {
@@ -138,7 +134,6 @@ $menime_list = [];
 if(isset($_GET['g'])){
 	$g = d_url($_GET['g']);
 	$halaman_link = $g;
-	//echo $halaman_link;
 	$menime_list = lista($halaman_link);
 }else{
 	$menime_list = lista_main($halaman_link);
