@@ -17,7 +17,7 @@ if(isset($_GET['page'])){
 	$q = $_GET['page'];
 	$p = $q.".php";
 	if(in_array($p, $file)){
-		if($q=="home"){
+		if($q=="parn"){
 			$inc = $p;
 			$anime_txt = "";
 			if(isset($_GET['a'])){
@@ -35,6 +35,28 @@ if(isset($_GET['page'])){
 			$nav = '<li><a href="index.php">Home</a></li>';
 			$nav .= '<li class="active">'.ucwords($anime_txt).'</li>';
 			$title .= " | ".ucwords($anime_txt);
+		}elseif($q=="hento"){
+			$inc = $p;
+			$nav = '<li><a href="index.php">Home</a></li>';
+			$nav .= '<li class="active">'.ucwords("Hentai").'</li>';
+			$title .= " | ".ucwords("Hento");
+		}elseif($q=="vhen"){
+			$inc = $p;
+
+			$hen = get_vid(d_url($_GET['b']));
+			$nav = '<li><a href="index.php">Home</a></li>';
+			$nav .= '<li><a href="index.php?page=hento">Hentai</a></li>';
+			$nav .= '<li class="active">'.ucwords($hen["title"]).'</li>';
+			$title .= " | ".ucwords("Hento");
+		}elseif($q=="fhen"){
+			$inc = $p;
+			$link = d_url($_GET['g']);
+			$vhen = get_vid_real($link);
+			$nav = '<li><a href="index.php">Home</a></li>';
+			$nav .= '<li><a href="index.php?page=hento">Hentai</a></li>';
+			$nav .= '<li><a href="index.php?page=vhen&b='.$_GET['b'].'">'.d_url($_GET['j']).'</a></li>';
+			$nav .= '<li class="active">'.ucwords($vhen['title']).'</li>';
+			$title .= " | ".ucwords("Hento");
 		}else{
 			$inc = $p;
 			$sub = $_GET['a'];
@@ -97,6 +119,29 @@ if(isset($_GET['page'])){
 			<img src="assets/img/icons.png" alt="Logo" height="75px" style="margin:20px 0;">
 		</a>
 	</div>
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    		<!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+		      	</button>
+		      	<!-- <a class="navbar-brand" href="#">Brand</a> -->
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      	<ul class="nav navbar-nav">
+			        <li <?= $inc=="home.php"?'class="active"':''; ?> ><a href="index.php">Home</a></li>
+			        <li <?= $inc=="parn.php" || $inc=="film.php"?'class="active"':''; ?> ><a href="index.php?page=parn">Parn</a></li>
+			        <li <?= ($inc!="home.php" && $inc!="parn.php" && $inc!="film.php" )?'class="active"':''; ?> ><a href="index.php?page=hento">Hento</a></li>
+		      	</ul>
+		    </div><!-- /.navbar-collapse -->
+  		</div><!-- /.container-fluid -->
+	</nav>	
 	<ol class="breadcrumb">
 		<?php echo $nav; ?>
 	</ol>
