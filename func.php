@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: x-access-header, Authorization, Origin, X-Requested-With, Content-Type, Accept");
 
 require('simplehtmldom/simple_html_dom.php');
 
@@ -8,6 +10,12 @@ function e_url( $s ) {
  
 function d_url($s) {
 	return base64_decode(str_pad(strtr($s, '-_', '+/'), strlen($s) % 4, '=', STR_PAD_RIGHT));
+}
+
+function pre($isi=''){
+	echo "<pre>";
+	print_r($isi);
+	echo "</pre>";
 }
 
 if(isset($_GET['e_url'])){
@@ -98,10 +106,12 @@ function get_vid_real($url){
 
 	$title = $html->find(".entry-title",0)->text();
 
+	$iframe_src = "";
+
 	foreach ($html->find("#pembed") as $pembed) {
-		//echo htmlentities($pembed);
 		$iframe = $pembed->find("iframe",0);
 		$video = htmlentities($iframe);
+		$iframe_src = $iframe->src;
 	}
 
 	$nav_list = [];
@@ -122,9 +132,60 @@ function get_vid_real($url){
 		}
 	}
 
-	$ret = ["title" => $title, "video" => $video, "nav_list" => $nav_list];
+	$single_info = $html->find(".single-info",0);
+	//echo htmlentities($single_info);
+
+	$ret = ["title" => $title, "video" => $video, "nav_list" => $nav_list, "single_info" => htmlentities($single_info)
+			,"iframe_src" => $iframe_src
+			];
 	return $ret;
 }
+/*
+$a = get_vid_real("http://209.126.6.6/inmou-2020-episode-1-subtitle-indonesia/");
+//pre($a);
+$b = //get_vid_iframe($a["iframe_src"]);
+$b = get_vid_iframe("https://mplayer.xyz//embed.php?data=q96F7jdq2QFdRiT+YaaFCmyZHueTDLBnojulp+jYQXYz+qx9uFwg2iV0ZaBXMkAzv0+qscdgAqClvAN6q64FgcUIJMT5J07cIKGfxUBAXoTAic0QbaYBxkFxWyuoOAsL7Z1CIwbj51j4EHaTd85D7Pbm9IGh7StVgR7W6CPtfHoQhKI2QeOnyfLCYYb9vzqWeSD9F+6JHKZn1XwHkYo6+LnKxT7xVox/Y7a6QFJNegca9JvKSETVE5oPXNFvWqgt6PY6RzZpAu8AYHfr8VLJi3CDUWHSmbgbw2INKjnpF2M=");
+*/
+function get_vid_iframe($url){
+	$ch = curl_init();
+	curl_setopt($ch,CURLOPT_URL,$url);
+	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
+	curl_setopt($ch, CURLOPT_PROXY, null);
 
+	$data = curl_exec($ch);
+	$info = curl_getinfo($ch);
+	$error = curl_error($ch);
+
+	curl_close($ch);
+	$dom = new simple_html_dom(null, true, true, DEFAULT_TARGET_CHARSET, true, DEFAULT_BR_TEXT, DEFAULT_SPAN_TEXT);
+
+	$html = $dom->load($data, true, true);
+	echo htmlentities($data);
+	//echo $html;
+}
 ?>
+
+<!-- <video 
+controls
+	style="width:100%"
+	class="jw-video jw-reset" 
+	tabindex="-1" 
+	disableremoteplayback="" 
+	webkit-playsinline="" 
+	playsinline="" 
+	preload="auto" 
+	src="https://r5---sn-a5m7lnlz.googlevideo.com/videoplayback?expire=1615144152&amp;ei=WLREYLCCA9TsrvIPrPSuoAE&amp;ip=68.65.121.224&amp;id=23c174933a5e93e1&amp;itag=22&amp;source=blogger&amp;mh=KS&amp;mm=31&amp;mn=sn-a5m7lnlz&amp;ms=au&amp;mv=m&amp;mvi=5&amp;pl=24&amp;susc=bl&amp;mime=video/mp4&amp;vprv=1&amp;dur=1178.435&amp;lmt=1591536104250748&amp;mt=1615115078&amp;sparams=expire,ei,ip,id,itag,source,susc,mime,vprv,dur,lmt&amp;sig=AOq0QJ8wRQIgWpAmDl7TZajXKgg5k3hcboJ9GbQhFUFywa0QPq26nG8CIQDRhyUxcb3D6Faw902z-9eKXMzh18YUXHe3_PXGSrM7jw%3D%3D&amp;lsparams=mh,mm,mn,ms,mv,mvi,pl&amp;lsig=AG3C_xAwRQIhAMpcMoGavUY5lVN7e5LQ1nmYWa6hUwPrwufcwHtbSL6qAiBpeMlhEUtS_L7_ODH5JcM81GQj5ae_UGD9Ul-UkxHL1g%3D%3D">
+	
+</video>
+<?php  //$video="https://r5---sn-a5m7lnlz.googlevideo.com/videoplayback?expire=1615144152&amp;ei=WLREYLCCA9TsrvIPrPSuoAE&amp;ip=68.65.121.224&amp;id=23c174933a5e93e1&amp;itag=22&amp;source=blogger&amp;mh=KS&amp;mm=31&amp;mn=sn-a5m7lnlz&amp;ms=au&amp;mv=m&amp;mvi=5&amp;pl=24&amp;susc=bl&amp;mime=video/mp4&amp;vprv=1&amp;dur=1178.435&amp;lmt=1591536104250748&amp;mt=1615115078&amp;sparams=expire,ei,ip,id,itag,source,susc,mime,vprv,dur,lmt&amp;sig=AOq0QJ8wRQIgWpAmDl7TZajXKgg5k3hcboJ9GbQhFUFywa0QPq26nG8CIQDRhyUxcb3D6Faw902z-9eKXMzh18YUXHe3_PXGSrM7jw%3D%3D&amp;lsparams=mh,mm,mn,ms,mv,mvi,pl&amp;lsig=AG3C_xAwRQIhAMpcMoGavUY5lVN7e5LQ1nmYWa6hUwPrwufcwHtbSL6qAiBpeMlhEUtS_L7_ODH5JcM81GQj5ae_UGD9Ul-UkxHL1g%3D%3D"; ?>
+<a href="https://r5---sn-a5m7lnlz.googlevideo.com/videoplayback?expire=1615144152&amp;ei=WLREYLCCA9TsrvIPrPSuoAE&amp;ip=68.65.121.224&amp;id=23c174933a5e93e1&amp;itag=22&amp;source=blogger&amp;mh=KS&amp;mm=31&amp;mn=sn-a5m7lnlz&amp;ms=au&amp;mv=m&amp;mvi=5&amp;pl=24&amp;susc=bl&amp;mime=video/mp4&amp;vprv=1&amp;dur=1178.435&amp;lmt=1591536104250748&amp;mt=1615115078&amp;sparams=expire,ei,ip,id,itag,source,susc,mime,vprv,dur,lmt&amp;sig=AOq0QJ8wRQIgWpAmDl7TZajXKgg5k3hcboJ9GbQhFUFywa0QPq26nG8CIQDRhyUxcb3D6Faw902z-9eKXMzh18YUXHe3_PXGSrM7jw%3D%3D&amp;lsparams=mh,mm,mn,ms,mv,mvi,pl&amp;lsig=AG3C_xAwRQIhAMpcMoGavUY5lVN7e5LQ1nmYWa6hUwPrwufcwHtbSL6qAiBpeMlhEUtS_L7_ODH5JcM81GQj5ae_UGD9Ul-UkxHL1g%3D%3D">
+	OPEN VIDEO
+</a>
+<video 
+	style="width:100%"
+	controls>
+	<source src="<?= $video; ?>" type='video/mp4'/>
+	<source src="<?= $video; ?>" type='video/webm'/>
+</video> -->

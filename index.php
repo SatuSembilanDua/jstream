@@ -3,8 +3,6 @@
 
 require('func.php');
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: x-access-header, Authorization, Origin, X-Requested-With, Content-Type, Accept");
 $menime_list = json_decode(file_get_contents("data/jstream.json") ,true);
 $file = scandir(".");
 unset($file[0], $file[1]);
@@ -19,7 +17,7 @@ if(isset($_GET['page'])){
 	if(in_array($p, $file)){
 		if($q=="parn"){
 			$inc = $p;
-			$anime_txt = "";
+			$anime_txt = "Parn";
 			if(isset($_GET['a'])){
 				$anime_txt = $menime_list[$_GET['a']]['judul'];
 			}
@@ -109,8 +107,6 @@ if(isset($_GET['page'])){
 	$nav = '<li  class="active">Home</li>';
 }
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -134,8 +130,11 @@ if(isset($_GET['page'])){
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/font-awesome.css">
 	<link rel="stylesheet" href="assets/css/icon.css">
-	<link rel="stylesheet" href="assets/css/style.css">
-	
+	<link rel="stylesheet" href="assets/css/style.css?t=<?= time(); ?>">
+	<?php if($inc!="parn.php" && $inc!="film.php"): ?>
+	<link rel="stylesheet" href="assets/css/style2.css?t=<?= time(); ?>">
+	<?php endif; ?>
+
     <script src="assets/js/jquery.min.js"></script>
 </head>
 <body>

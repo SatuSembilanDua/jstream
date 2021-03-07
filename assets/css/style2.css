@@ -1,0 +1,255 @@
+/*@font-face{
+	font-family:"Font Awesome 5 Brands";
+	font-style:normal;
+	font-weight:400;
+	font-display:block;
+	src:url(../webfonts/fa-brands-400.eot);
+	src:url(../webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),
+		url(../webfonts/fa-brands-400.woff2) format("woff2"),
+		url(../webfonts/fa-brands-400.woff) format("woff"),
+		url(../webfonts/fa-brands-400.ttf) format("truetype"),
+		url(../webfonts/fa-brands-400.svg#fontawesome) format("svg")
+}
+.fab{font-family:"Font Awesome 5 Brands"}
+@font-face{
+	font-family:"Font Awesome 5 Free";
+	font-style:normal;
+	font-weight:400;
+	font-display:block;
+	src:url(../webfonts/fa-regular-400.eot);
+	src:url(../webfonts/fa-regular-400.eot?#iefix) format("embedded-opentype"),
+		url(../webfonts/fa-regular-400.woff2) format("woff2"),
+		url(../webfonts/fa-regular-400.woff) format("woff"),
+		url(../webfonts/fa-regular-400.ttf) format("truetype"),
+		url(../webfonts/fa-regular-400.svg#fontawesome) format("svg")
+}
+.fab,.far{font-weight:400}
+@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:900;font-display:block;src:url(../webfonts/fa-solid-900.eot);src:url(../webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(../webfonts/fa-solid-900.woff2) format("woff2"),url(../webfonts/fa-solid-900.woff) format("woff"),url(../webfonts/fa-solid-900.ttf) format("truetype"),url(../webfonts/fa-solid-900.svg#fontawesome) format("svg")}.fa,.far,.fas{font-family:"Font Awesome 5 Free"}.fa,.fas{font-weight:900}
+*/
+
+.col-list{
+	padding: 5px;
+}
+.img-list{
+	width: 100%;
+	height: 250px;
+	background-size: 100%;
+	background-repeat:no-repeat;
+	background-position: center center;
+}
+.see{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 250px;
+	background: rgba(0, 0, 0, 0.2);
+	text-align: center;
+	font-size: 2.5em;
+	padding-top: 100px;
+}
+
+.bixbox {
+    background: #222;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin-bottom: 18px;
+    box-shadow: 1px 3px 8px rgb(49 49 49 / 10%);
+    overflow: hidden;
+    color: #ccc;
+}
+
+.single-info.bixbox{
+	padding: 15px;
+}
+.single-info.bixbox .thumb {
+    float: left;
+    width: 150px;
+    margin-right: 15px;
+}
+.single-info.bixbox .thumb img{
+	max-width: 100%;
+    height: auto;
+}
+.single-info.bixbox .infox {
+    overflow: hidden;
+    line-height: 21px;
+    font-size: 13px;
+    position: relative;
+}
+
+
+.single-info.bixbox .infox .infolimit {
+    margin-right: 120px;
+    margin-bottom: 10px;
+}
+.infolimit>h2{
+	color: #FFF
+	margin: 0;
+	font-size: 17px;
+	font-weight: bold;
+}
+.single-info.bixbox .infox .infolimit .alter {
+    margin-top: 5px;
+    display: block;
+    color: #999;
+}
+
+.single-info.bixbox .infox .rating {
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: center;
+    padding: 7px 10px;
+    background: #111;
+    border-radius: 5px;
+}
+.single-info.bixbox .infox .rating strong {
+    font-weight: 400;
+    display: block;
+}
+.rating-prc .rtp {
+    overflow: hidden;
+}
+.rating-prc .rtp .rtb {
+    position: relative;
+    overflow: hidden;
+    color: #ffc700;
+    height: 15px;
+    line-height: 1;
+    width: 85px;
+    font-size: 15px;
+    margin: 0 auto;
+}
+.rating-prc .rtp .rtb:before {
+    content: "\f005\f005\f005\f005\f005";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #555;
+}
+.rating-prc .rtp .rtb span {
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding-top: 14px;
+}
+.rating-prc .rtp .rtb span:before {
+    content: "\f005\f005\f005\f005\f005";
+    font-family: "FontAwesome";
+    font-weight: 900;
+    top: 0;
+    position: absolute;
+    left: 0;
+}
+.single-info.bixbox .infox {
+    overflow: hidden;
+    line-height: 21px;
+    font-size: 13px;
+    position: relative;
+}
+.single-info.bixbox .infox .spe {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.single-info.bixbox .infox .spe span {
+    width: 50%;
+    margin-bottom: 3px;
+    padding-right: 7px;
+    padding-left: 14px;
+    position: relative;
+    line-height: 19px;
+}
+.spe span:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    background: #ffb7b7;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 4px;
+}
+.single-info.bixbox .infox .spe span.split {
+    overflow: hidden;
+}
+.mindesc {
+    margin-bottom: 5px;
+    line-height: 21px;
+}
+.alter {
+    display: block;
+    margin-bottom: 5px;
+}
+.spe {
+    margin-bottom: 10px;
+    overflow: hidden;
+    column-count: 2;
+}
+.spe span {
+    margin-bottom: 3px;
+    padding-right: 7px;
+    padding-left: 14px;
+    position: relative;
+    line-height: 19px;
+    display: block;
+}
+.spe span.split {
+    overflow: hidden;
+}
+.genxed {
+    overflow: hidden;
+    margin-bottom: 10px;
+
+}
+.genxed a {
+    display: inline-block;
+    padding: 4px 8px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #CCC;
+    border: .5px solid #0c70de;
+    border-radius: 3px;
+    border-color: #ffb7b7;
+}
+
+.releases {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 15px;
+    border-bottom: 1px solid #312f40;
+}
+.releases h1, .releases>h2, .releases h3, #sidebar .section h3 {
+    font-size: 1.1em;
+    color: #FFF;
+    line-height: 20px;
+    font-weight: 500;
+    margin: 0;
+    position: relative;
+}
+.synp .entry-content {
+    margin: 15px;
+    line-height: 21px;
+}
+
+
+@media only screen and (max-width: 695px){
+    .single-info.bixbox .thumb {
+        display: none;
+    }
+    .single-info.bixbox .infox .spe span {
+        width: auto;
+        float: none;
+        display: block;
+    }
+}

@@ -2,48 +2,14 @@
 	iframe{
 		height: 500px;
 	}
-	/*.naveps {
-	    font-size: 13px;
-	    padding: 3px 0;
+	@media (min-width: 320px) and (max-width: 480px) {
+		iframe{
+			height: 280px;
+		}
 	}
-
-	.naveps.bignav {
-	    float: none;
-	    overflow: hidden;
-	    margin-bottom: 15px;
-	}
-	.naveps .nvs {
-	    float: left;
-	}
-	.naveps.bignav .nvs {
-	    width: 33.33333%;
-	    text-align: center;
-	}
-	.naveps.bignav .nvs a {
-		border-radius: 3px;
-    	display: block;
-		padding: 10px 0;
-	    background: #222;
-	    color: #CCC;
-	    box-shadow: 0 3px 0 0 #0f0f0f;
-	}
-	.naveps.bignav .nvs.nvsc {
-	    margin: 0;
-	    color: #FFF;
-	    background: #ffb7b7;
-	}*/
 </style>
 <?php
-
-//echo e_url("Amanee!: Tomodachinchi de Konna Koto ni Naru Nante! (2013)");
-
-
-
-//$link = "http://209.126.6.6/amanee-tomodachinchi-de-konna-koto-ni-naru-nante-2013-episode-1-sub-indo/";
-
-
-/*print_r($a);*/
-
+//echo $link;
 echo "<h2>$vhen[title]</h2>";
 
 echo html_entity_decode($vhen['video']);
@@ -66,3 +32,16 @@ echo html_entity_decode($vhen['video']);
 		</a>
 	</div>
 </div>
+<br><br>
+<?= html_entity_decode($vhen['single_info']); ?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("a[rel='tag']").each(function(i, v){
+			var link = $(v).attr("href");
+			$.get("func.php?e_url="+link, function(data, status){
+			    //console.log("Data: " + data + "\nStatus: " + status);
+				$(v).attr("href","index.php?page=hento&g="+data);
+			});
+		});
+	});
+</script>
