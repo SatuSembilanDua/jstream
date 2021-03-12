@@ -4,6 +4,7 @@
 require('func.php');
 
 $menime_list = json_decode(file_get_contents("data/jstream.json") ,true);
+
 $file = scandir(".");
 unset($file[0], $file[1]);
 $title = "JStream ";

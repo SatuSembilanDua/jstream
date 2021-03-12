@@ -165,6 +165,24 @@ function get_vid_iframe($url){
 	echo htmlentities($data);
 	//echo $html;
 }
+
+
+
+/*$menime_list = json_decode(file_get_contents("data/jstream.json") ,true);
+//pre($menime_list);
+$a = $menime_list[7];
+$a['link'] = "https://drive.google.com/uc?export=download&id=1sWdfa8il3YgsejSQDgRRpd8Q8vTLcMX_";
+$a['thumbnail'] = "https://drive.google.com/thumbnail?authuser=0&sz=w320&id=1sWdfa8il3YgsejSQDgRRpd8Q8vTLcMX_";
+$a['kategori'] = 'Jav';
+$a['group'] = '32';
+$a['judul'] = 'CRS-045 Roh Flower 乃 Momose Sex Slaves Young Wife';
+$a['id'] = '1sWdfa8il3YgsejSQDgRRpd8Q8vTLcMX_';
+$menime_list[14] = $a;
+pre($menime_list);
+
+$myfile = fopen("data/jstream.json", "w") or die("Unable to open file!");
+fwrite($myfile, json_encode($menime_list));
+fclose($myfile);*/
 ?>
 
 <!-- <video 
