@@ -1,35 +1,4 @@
 <?php
-	
-	
-	/*echo '<pre>';
-	print_r($menime_list);*/
-	//https://drive.google.com/file/d/1oVG3nJu2gCiaeXsbImF8PuaTkOR3zrdm/view?usp=sharing
-	//https://drive.google.com/file/d/1oVG3nJu2gCiaeXsbImF8PuaTkOR3zrdm/view?usp=sharing
-	//https://drive.google.com/file/d/1tgfTE4b8u8_GNWfsmlYs4XpWEVv-WWyx/view?usp=sharing
-	/*$sdmm = [
-				array(
-						"link" => "https://drive.google.com/uc?export=download&id=1oVG3nJu2gCiaeXsbImF8PuaTkOR3zrdm",
-						"thumbnail" => "https://drive.google.com/thumbnail?authuser=0&sz=w320&id=1oVG3nJu2gCiaeXsbImF8PuaTkOR3zrdm",
-						"kategori" => "JAV",
-						"group" => "31",
-						"judul" => "01_SDMM-040 Magic Mirror No. Couple NTR Adhesive Foam Massage Experience At A Distance Of 30cm Through The Mirror To The Boyfriend! Even She Who Is Lovable And Desperate Can Not Refuse Others ○ Port In The Pleasure Of Rubbing Between The Crotch! ?",
-						"id" => "1oVG3nJu2gCiaeXsbImF8PuaTkOR3zrdm",
-				),array(
-						"link" => "https://drive.google.com/uc?export=download&id=1tgfTE4b8u8_GNWfsmlYs4XpWEVv-WWyx",
-						"thumbnail" => "https://drive.google.com/thumbnail?authuser=0&sz=w320&id=1tgfTE4b8u8_GNWfsmlYs4XpWEVv-WWyx",
-						"kategori" => "JAV",
-						"group" => "31",
-						"judul" => "02_SDMM-040 Magic Mirror No. Couple NTR Adhesive Foam Massage Experience At A Distance Of 30cm Through The Mirror To The Boyfriend! Even She Who Is Lovable And Desperate Can Not Refuse Others ○ Port In The Pleasure Of Rubbing Between The Crotch! ?",
-						"id" => "1tgfTE4b8u8_GNWfsmlYs4XpWEVv-WWyx",
-				),
-
-			];
-	$menime_list[30] = $sdmm;
-	$myfile = fopen("data/jstream.json", "w") or die("Unable to open file!");
-	fwrite($myfile, json_encode($menime_list));
-	fclose($myfile);*/
-	/*echo '</pre>';*/
-
 
 function lista($url){
 	$ch = curl_init();
@@ -46,7 +15,6 @@ function lista($url){
 	curl_close($ch);
 	$dom = new simple_html_dom(null, true, true, DEFAULT_TARGET_CHARSET, true, DEFAULT_BR_TEXT, DEFAULT_SPAN_TEXT);
 
-	//$html = file_get_html($url);
 	$html = $dom->load($data, true, true);
 	$list_episode = array();
 
@@ -55,12 +23,19 @@ function lista($url){
 			$judul = $bs->find(".tt>h2",0)->text();
 			$img = $bs->find("img",0)->src;
 			$a = $bs->find("a",0)->href;
+			$rel = $bs->find("a",0)->attr["rel"];
+			$epx = ($bs->find(".epx",0))?$bs->find(".epx",0)->text():'';
+			$sub = ($bs->find(".sb",0))?$bs->find(".sb",0)->text():'';
 			$list_episode[] = array(
 									"judul" => $judul,
 									"img" => $img,
 									"link" => "index.php?page=vhen&b=".e_url($a),
+									"epx" => $epx,
+									"sub" => $sub,
+									"rel" => $rel
 									);
 									
+			
 		}
 	}
 	$list_pagin = [];
@@ -116,13 +91,16 @@ function lista_main($url){
 
 	foreach ($html->find(".excstf") as $lst) {
 		foreach ($lst->find("article.bs") as $bs) {
+
 			$judul = $bs->find(".tt>h2",0)->text();
 			$img = $bs->find("img",0)->src;
 			$a = $bs->find("a",0)->href;
+			$rel = $bs->find("a",0)->attr["rel"];
 			$list_episode[] = array(
 									"judul" => $judul,
 									"img" => $img,
 									"link" => "index.php?page=fhen&g=".e_url($a),
+									"rel" => $rel,
 									);
 									
 		}
@@ -131,19 +109,15 @@ function lista_main($url){
 	return ["judul" => "hentai", "main" => $list_episode, "pagin" => []];
 }
 
-//$halaman_link = "http://209.126.6.6/genres/milf/";
 $halaman_link = "http://209.126.6.6/";
-
 $menime_list = [];
 if(isset($_GET['g'])){
 	$g = d_url($_GET['g']);
 	$halaman_link = $g;
-	//echo $halaman_link;
 	$menime_list = lista($halaman_link);
 }else{
 	$menime_list = lista_main($halaman_link);
 }
-//$pagination = pagin($halaman_link);
 $pagination = $menime_list["pagin"];
 ?>
 <style>
@@ -168,12 +142,20 @@ $pagination = $menime_list["pagin"];
 			$img = $v['img'];
 		}
 ?>
-		<div class="col-md-3 col-xs-6 col-list">
+		<div class="col-md-2 col-xs-6 col-list">
 			<div class="anime-list">
-				<a href="<?= $link;?>" title="<?= $v['judul']; ?>">
-					<div class="poster-img">
+				<a href="<?= $link;?>" title="<?= $v['judul']; ?>" class="poster-img-a" rel="<?= $v['rel']; ?>" data-show="0" >
+					<div class="poster-img"  >
 						<div class="img-list" style="background-image: url(<?= $img; ?>);" ></div>
-						<div class="see"><i class="fa fa-play"></i></div>
+						<div class="see">
+							<i class="fa fa-play-circle-o"></i>
+						</div>
+						<div class="see_ext">
+							<div class="bt">
+								<span class="epx"><?= $v['epx']; ?></span>
+								<span class="sb Sub"><?= $v['sub']; ?></span>			
+							</div>
+						</div>
 					</div>
 				</a>
 				<div class="film-judul">
@@ -192,7 +174,17 @@ $pagination = $menime_list["pagin"];
 <?php endforeach; ?>
 </div>
 <?php if(!empty($pagination)): ?>
-<nav aria-label="Page navigation">
+<style type="text/css">
+	nav.navigation{
+		text-align: center;
+	}
+	ul.pagination{
+		clear: both;
+		float: none;
+		text-align: center;
+	}
+</style>
+<nav class="navigation" aria-label="page navigation">
   	<ul class="pagination">
   		<?php
   			foreach ($pagination as $ka => $va) {
@@ -217,3 +209,64 @@ $pagination = $menime_list["pagin"];
   	</ul>
 </nav>
 <?php endif; ?>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		/*$(".poster-img-a").mouseenter(function(e, h){
+			var rel = $(this).attr("rel");
+			var ts = $(this).attr("data-show");
+			if(ts==0){
+					//clientX: 646
+					//clientY: 239
+				
+				console.log(e);
+				console.log(rel);
+				$(this).attr("data-show",1);
+			}else{
+				$(this).attr("data-show",0);
+			}
+		});*/
+	});
+</script>
+<!-- 
+<div class="load_tooltip">
+	
+</div>
+
+<div class="tooltip tooltip-ini">
+   <div class="thumbnail"><img src="http://i0.wp.com/209.126.6.6/wp-content/uploads/2020/04/1586888095-105097.jpg" class="wp-post-image" loading="lazy" /></div>
+   <div class="detail">
+      <div class="rating">
+         <strong>Rating 6.17</strong> 
+         <div class="rating-prc" itemscope="itemscope" itemprop="aggregateRating" itemtype="//schema.org/AggregateRating">
+            <meta itemprop="ratingValue" content="6.17">
+            <meta itemprop="worstRating" content="1">
+            <meta itemprop="bestRating" content="10">
+            <meta itemprop="ratingCount" content="10">
+            <div class="rtp">
+               <div class="rtb"><span style="width:61.7%"></span></div>
+            </div>
+         </div>
+      </div>
+      <table>
+         <tr>
+            <td><b>Type</b></td>
+            <td>Anime</td>
+         </tr>
+         <tr>
+            <td><b>Status</b></td>
+            <td>Ongoing</span> 
+         <tr>
+            <td><b>Duration</b></td>
+            <td>Unknown</span> 
+         <tr>
+            <td><b>Genres</b></td>
+            <td><a href="http://209.126.6.6/genres/big-oppai/" rel="tag">Big Oppai</a>, <a href="http://209.126.6.6/genres/creampie/" rel="tag">Creampie</a>, <a href="http://209.126.6.6/genres/forced/" rel="tag">Forced</a>, <a href="http://209.126.6.6/genres/hentai/" rel="tag">Hentai</a>, <a href="http://209.126.6.6/genres/maid/" rel="tag">Maid</a>, <a href="http://209.126.6.6/genres/masturbation/" rel="tag">Masturbation</a>, <a href="http://209.126.6.6/genres/milf/" rel="tag">MILF</a>, <a href="http://209.126.6.6/genres/netorare/" rel="tag">Netorare</a>, <a href="http://209.126.6.6/genres/paizuri/" rel="tag">Paizuri</a>, <a href="http://209.126.6.6/genres/rape/" rel="tag">Rape</a>, <a href="http://209.126.6.6/genres/virgin/" rel="tag">Virgin</a></td>
+         </tr>
+      </table>
+      <div class="contexcerpt">Jitaku Keibiin 2 (2020) Sinopsis Ini merupakan seri kedua dari Jitaku Keibiin. Haibara Shikimori yang seharusnya mewarisi vila dari kakeknya namun vila itu jatuh ke tangan sepupunya si Rena. Berdasarkan...</div>
+   </div>
+</div>
+
+
+ -->

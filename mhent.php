@@ -52,13 +52,28 @@ function lista($url){
 
 	foreach ($html->find(".listupd") as $lst) {
 		foreach ($lst->find("div.bs") as $bs) {
-			$judul = $bs->find(".bsx>a>.tt",0)->text();
+			/*$judul = $bs->find(".bsx>a>.tt",0)->text();
 			$img = $bs->find("img",0)->src;
 			$a = $bs->find("a",0)->href;
 			$list_episode[] = array(
 									"judul" => $judul,
 									"img" => $img,
 									"link" => "index.php?page=fhen2&jd=".$_GET['jd']."&ga=".$_GET['g']."&g=".e_url($a),
+									);*/
+
+			$judul = $bs->find(".bsx>a>.tt",0)->text();
+			$img = $bs->find("img",0)->src;
+			$a = $bs->find("a",0)->href;
+			$rel = $bs->find("a",0)->attr["rel"];
+			$epx = ($bs->find(".epx",0))?$bs->find(".epx",0)->text():'';
+			$sub = ($bs->find(".sb",0))?$bs->find(".sb",0)->text():'';
+			$list_episode[] = array(
+									"judul" => $judul,
+									"img" => $img,
+									"link" => "index.php?page=vhen&b=".e_url($a),
+									"epx" => $epx,
+									"sub" => $sub,
+									"rel" => $rel
 									);
 									
 		}
@@ -112,13 +127,28 @@ function lista_main($url){
 
 	foreach ($html->find(".excstf") as $lst) {
 		foreach ($lst->find("article.bs") as $bs) {
-			$judul = $bs->find(".tt>h2",0)->text();
+			/*$judul = $bs->find(".tt>h2",0)->text();
 			$img = $bs->find("img",0)->src;
 			$a = $bs->find("a",0)->href;
 			$list_episode[] = array(
 									"judul" => $judul,
 									"img" => $img,
 									"link" => "index.php?page=fhen&g=".e_url($a),
+									);*/
+
+			$judul = $bs->find(".tt>h2",0)->text();
+			$img = $bs->find("img",0)->src;
+			$a = $bs->find("a",0)->href;
+			$rel = $bs->find("a",0)->attr["rel"];
+			$epx = ($bs->find(".epx",0))?$bs->find(".epx",0)->text():'';
+			$sub = ($bs->find(".sb",0))?$bs->find(".sb",0)->text():'';
+			$list_episode[] = array(
+									"judul" => $judul,
+									"img" => $img,
+									"link" => "index.php?page=fhen&b=".e_url($a),
+									"epx" => $epx,
+									"sub" => $sub,
+									"rel" => $rel
 									);
 									
 		}
@@ -163,12 +193,20 @@ $pagination = $menime_list["pagin"];
 			$img = $v['img'];
 		}
 ?>
-		<div class="col-md-3 col-xs-6 col-list">
+
+		<div class="col-md-2 col-xs-6 col-list">
+		<!-- <div class="col-md-3 col-xs-6 col-list"> -->
 			<div class="anime-list">
 				<a href="<?= $link;?>" title="<?= $v['judul']; ?>">
 					<div class="poster-img">
 						<div class="img-list" style="background-image: url(<?= $img; ?>);" ></div>
-						<div class="see"><i class="fa fa-play"></i></div>
+						<div class="see"><i class="fa fa-play-circle-o"></i></div>
+						<div class="see_ext">
+							<div class="bt">
+								<span class="epx"><?= $v['epx']; ?></span>
+								<span class="sb Sub"><?= $v['sub']; ?></span>		
+							</div>
+						</div>
 					</div>
 				</a>
 				<div class="film-judul">

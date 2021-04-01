@@ -184,26 +184,3 @@ $myfile = fopen("data/jstream.json", "w") or die("Unable to open file!");
 fwrite($myfile, json_encode($menime_list));
 fclose($myfile);*/
 ?>
-
-<!-- <video 
-controls
-	style="width:100%"
-	class="jw-video jw-reset" 
-	tabindex="-1" 
-	disableremoteplayback="" 
-	webkit-playsinline="" 
-	playsinline="" 
-	preload="auto" 
-	src="https://r5---sn-a5m7lnlz.googlevideo.com/videoplayback?expire=1615144152&amp;ei=WLREYLCCA9TsrvIPrPSuoAE&amp;ip=68.65.121.224&amp;id=23c174933a5e93e1&amp;itag=22&amp;source=blogger&amp;mh=KS&amp;mm=31&amp;mn=sn-a5m7lnlz&amp;ms=au&amp;mv=m&amp;mvi=5&amp;pl=24&amp;susc=bl&amp;mime=video/mp4&amp;vprv=1&amp;dur=1178.435&amp;lmt=1591536104250748&amp;mt=1615115078&amp;sparams=expire,ei,ip,id,itag,source,susc,mime,vprv,dur,lmt&amp;sig=AOq0QJ8wRQIgWpAmDl7TZajXKgg5k3hcboJ9GbQhFUFywa0QPq26nG8CIQDRhyUxcb3D6Faw902z-9eKXMzh18YUXHe3_PXGSrM7jw%3D%3D&amp;lsparams=mh,mm,mn,ms,mv,mvi,pl&amp;lsig=AG3C_xAwRQIhAMpcMoGavUY5lVN7e5LQ1nmYWa6hUwPrwufcwHtbSL6qAiBpeMlhEUtS_L7_ODH5JcM81GQj5ae_UGD9Ul-UkxHL1g%3D%3D">
-	
-</video>
-<?php  //$video="https://r5---sn-a5m7lnlz.googlevideo.com/videoplayback?expire=1615144152&amp;ei=WLREYLCCA9TsrvIPrPSuoAE&amp;ip=68.65.121.224&amp;id=23c174933a5e93e1&amp;itag=22&amp;source=blogger&amp;mh=KS&amp;mm=31&amp;mn=sn-a5m7lnlz&amp;ms=au&amp;mv=m&amp;mvi=5&amp;pl=24&amp;susc=bl&amp;mime=video/mp4&amp;vprv=1&amp;dur=1178.435&amp;lmt=1591536104250748&amp;mt=1615115078&amp;sparams=expire,ei,ip,id,itag,source,susc,mime,vprv,dur,lmt&amp;sig=AOq0QJ8wRQIgWpAmDl7TZajXKgg5k3hcboJ9GbQhFUFywa0QPq26nG8CIQDRhyUxcb3D6Faw902z-9eKXMzh18YUXHe3_PXGSrM7jw%3D%3D&amp;lsparams=mh,mm,mn,ms,mv,mvi,pl&amp;lsig=AG3C_xAwRQIhAMpcMoGavUY5lVN7e5LQ1nmYWa6hUwPrwufcwHtbSL6qAiBpeMlhEUtS_L7_ODH5JcM81GQj5ae_UGD9Ul-UkxHL1g%3D%3D"; ?>
-<a href="https://r5---sn-a5m7lnlz.googlevideo.com/videoplayback?expire=1615144152&amp;ei=WLREYLCCA9TsrvIPrPSuoAE&amp;ip=68.65.121.224&amp;id=23c174933a5e93e1&amp;itag=22&amp;source=blogger&amp;mh=KS&amp;mm=31&amp;mn=sn-a5m7lnlz&amp;ms=au&amp;mv=m&amp;mvi=5&amp;pl=24&amp;susc=bl&amp;mime=video/mp4&amp;vprv=1&amp;dur=1178.435&amp;lmt=1591536104250748&amp;mt=1615115078&amp;sparams=expire,ei,ip,id,itag,source,susc,mime,vprv,dur,lmt&amp;sig=AOq0QJ8wRQIgWpAmDl7TZajXKgg5k3hcboJ9GbQhFUFywa0QPq26nG8CIQDRhyUxcb3D6Faw902z-9eKXMzh18YUXHe3_PXGSrM7jw%3D%3D&amp;lsparams=mh,mm,mn,ms,mv,mvi,pl&amp;lsig=AG3C_xAwRQIhAMpcMoGavUY5lVN7e5LQ1nmYWa6hUwPrwufcwHtbSL6qAiBpeMlhEUtS_L7_ODH5JcM81GQj5ae_UGD9Ul-UkxHL1g%3D%3D">
-	OPEN VIDEO
-</a>
-<video 
-	style="width:100%"
-	controls>
-	<source src="<?= $video; ?>" type='video/mp4'/>
-	<source src="<?= $video; ?>" type='video/webm'/>
-</video> -->

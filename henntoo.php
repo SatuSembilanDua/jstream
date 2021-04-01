@@ -141,8 +141,10 @@
 		});
 		$(".taxindex>li>a").each(function(i, v){
 			var link = $(v).attr("href");
+			//console.log("func.php?e_url="+link);
 			$.get("func.php?e_url="+link, function(data, status){
 			    //console.log("Data: " + data + "\nStatus: " + status);
+			    //console.log(data);
 				$(v).attr("href","index.php?page=hento&g="+data);
 			});
 		});

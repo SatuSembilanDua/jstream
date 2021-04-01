@@ -32,22 +32,42 @@
 }
 .img-list{
 	width: 100%;
-	height: 250px;
+	height: 190px;
 	background-size: 100%;
 	background-repeat:no-repeat;
 	background-position: center center;
+    transition: background-size 0.2s ease-in;
+}
+a>.poster-img:hover .img-list{
+    background-size: 120%;
+    /*filter: blur(2px);*/
 }
 .see{
 	display: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 250px;
+    top: 15px;
+    left: 10px;
+    width: 90%;
+    height: 190px;
 	background: rgba(0, 0, 0, 0.2);
 	text-align: center;
-	font-size: 2.5em;
-	padding-top: 100px;
+	padding-top: 60px;
+}
+
+.see>.fa{
+    font-size: 1.5em;
+    color:#FFF;
+    font-weight: 100;
+}
+
+.see_ext{
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    width: 90%;
+    height: 190px;
+    /*background: rgba(255, 255, 0, 0.4);*/
+    text-align: center;
+    padding-top: 80px;
 }
 
 .bixbox {
@@ -243,7 +263,80 @@
 }
 
 
+.bt {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    color: #FFF;
+    font-size: 12.5px;
+    overflow: hidden;
+    
+    background: linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.6) 30%,rgba(0,0,0,.8) 60%,rgba(0,0,0,.7) 100%);
+    
+    padding-bottom: 5px;
+    padding-top: 12px;
+}
+span.epx {
+    display: block;
+    float: left;
+    margin-left: 10px;
+}
+span.sb{
+    display: block;
+    float: right;
+    padding: 2px 5px;
+    font-size: 12px;
+    color: #111;
+    margin-right: 5px;
+    line-height: normal;
+    border-radius: 3px;
+    background: #ffa000;
+}
+
+.tooltip-ini{
+    opacity: 1;
+}
+
+.tooltip-ini .thumbnail {
+    float: left;
+    width: 175px;
+    margin-right: 15px;
+}
+.tooltip-ini .detail {
+    overflow: hidden;
+}
+.tooltip-ini .detail .rating {
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    font-size: 13px;
+    padding: 5px 8px;
+    background: #ebf2f6;
+    border-radius: 3px;
+}
+.tooltip-ini .detail .rating strong {
+    font-weight: 400;
+    margin-bottom: 3px;
+    display: block;
+    color:#000;
+}
+.tooltip-ini .detail table {
+    margin-bottom: 10px;
+    width: 100%;
+}
+.tooltip-ini .detail table tr td {
+    vertical-align: baseline;
+    padding-right: 7px;
+}
+.tooltip-ini .detail .rating .rating-prc .rtp .rtb {
+    font-size: 13px;
+    width: 73px;
+}
+
+
 @media only screen and (max-width: 695px){
+    
     .single-info.bixbox .thumb {
         display: none;
     }

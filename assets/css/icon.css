@@ -1801,7 +1801,7 @@ float: left;
 padding: 40px 0
 }
 .pagination {
-float: left;
+/*float: left;*/
 width: 100%;
 font-size: 14px
 }

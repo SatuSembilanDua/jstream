@@ -260,6 +260,7 @@ a:hover{
 .anime-list{
 	border-radius: 5px;
 	margin-bottom: 20px;
+	padding: 10px 5px;
 }
 .img-list{
 	width: 100%;
@@ -281,11 +282,13 @@ a:hover{
     top: 0;
     padding: 0 3px;
     margin-top: -1px;
+    border-radius: 10%;
 }
 .mark>i{
 	font-size: 24px;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.5);
+    /*color: rgba(255, 255, 255, 1);*/
+    color:#e50914;
 }
 .film-judul>h3{
 	font-weight: 500;
@@ -305,7 +308,7 @@ a:hover{
 	color: #e50914;
 }
 .see{
-	display: none;
+	/*display: none;*/
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -320,7 +323,7 @@ a:hover{
 	color: #FFF;
 }
 a>.poster-img:hover .img-list{
-	filter: blur(2px);
+	/*filter: blur(2px);*/
 }
 a>.poster-img:hover .see{
 	display: block;
