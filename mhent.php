@@ -64,13 +64,18 @@ function lista($url){
 			$judul = $bs->find(".bsx>a>.tt",0)->text();
 			$img = $bs->find("img",0)->src;
 			$a = $bs->find("a",0)->href;
-			$rel = $bs->find("a",0)->attr["rel"];
+			$rel = "";
+			if(isset($bs->find("a",0)->attr["rel"])){
+				$rel = $bs->find("a",0)->attr["rel"];
+			}
 			$epx = ($bs->find(".epx",0))?$bs->find(".epx",0)->text():'';
 			$sub = ($bs->find(".sb",0))?$bs->find(".sb",0)->text():'';
 			$list_episode[] = array(
 									"judul" => $judul,
 									"img" => $img,
-									"link" => "index.php?page=vhen&b=".e_url($a),
+									"link" => "index.php?page=fhen2&jd=".$_GET['jd']."&ga=".$_GET['g']."&g=".e_url($a),
+									//"link" => "index.php?page=fhen2&b=".e_url($a),
+									//"link" => "index.php?page=vhen&b=".e_url($a),
 									"epx" => $epx,
 									"sub" => $sub,
 									"rel" => $rel
@@ -142,10 +147,12 @@ function lista_main($url){
 			$rel = $bs->find("a",0)->attr["rel"];
 			$epx = ($bs->find(".epx",0))?$bs->find(".epx",0)->text():'';
 			$sub = ($bs->find(".sb",0))?$bs->find(".sb",0)->text():'';
+
+			$link = "index.php?page=fhen&g=".e_url($a);
 			$list_episode[] = array(
 									"judul" => $judul,
 									"img" => $img,
-									"link" => "index.php?page=fhen&b=".e_url($a),
+									"link" => $link,
 									"epx" => $epx,
 									"sub" => $sub,
 									"rel" => $rel
