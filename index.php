@@ -32,6 +32,7 @@ if(isset($_GET['page'])){
 				$anime_txt = $menime_list[$_GET['a']][0]['judul'];
 			}
 			$nav = '<li><a href="index.php">Home</a></li>';
+			$nav .= '<li><a href="index.php?page=parn">Parn</a></li>';
 			$nav .= '<li class="active">'.ucwords($anime_txt).'</li>';
 			$title .= " | ".ucwords($anime_txt);
 		}elseif($q=="hento" || $q=="mhent"){
@@ -62,8 +63,8 @@ if(isset($_GET['page'])){
 			$nav_link = isset($_GET['b'])?$_GET['b']:e_url($vhen['nav_list'][1]['link']);
 			$nav_txt = isset($_GET['j'])?d_url($_GET['j']):$vhen['title'];
 			$nav = '<li><a href="index.php">Home</a></li>';
-			$nav .= '<li><a href="index.php?page=hento">Hentai</a></li>';
-			$nav .= '<li><a href="index.php?page=vhen&b='.$nav_link.'">'.$nav_txt.'</a></li>';
+			$nav .= '<li><a href="index.php?page=mhent">Hentai</a></li>';
+			//$nav .= '<li><a href="index.php?page=vhen&b='.$nav_link.'">'.$nav_txt.'</a></li>';
 			$nav .= '<li class="active">'.ucwords($vhen['title']).'</li>';
 			$title .= " | ".ucwords("Hento");
 		}elseif($q=="fhen2"){
@@ -87,6 +88,7 @@ if(isset($_GET['page'])){
 
 				$at = $ml_current['judul'];//join(" ", explode("_", $sub));
 				$nav = '<li><a href="index.php">Home</a></li>';
+				$nav .= '<li><a href="index.php?page=parn">Parn</a></li>';
 				$nav .= '<li class="active">'.trim($anime_txt).'</li>';
 				$title .= " | ".ucwords($at)." ".ucwords($anime_txt);
 				$list_anime = $ml_current;
@@ -96,6 +98,7 @@ if(isset($_GET['page'])){
 				$anime_txt = $ml_current['judul'];
 				$at = $ml_current['judul'];//join(" ", explode("_", $sub));
 				$nav = '<li><a href="index.php">Home</a></li>';
+				$nav .= '<li><a href="index.php?page=parn">Parn</a></li>';
 				$nav .= '<li><a href="index.php?page=episode&a='.$sub.'">'.$anime_txt.'</a></li>';
 				$nav .= '<li class="active">'.$_GET['id'].'</li>';
 				$title .= " | ".ucwords($at)." ".ucwords($anime_txt);
@@ -116,11 +119,11 @@ if(isset($_GET['page'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Chrome, Firefox OS and Opera -->
-	<meta name="theme-color" content="#e50914">
+	<meta name="theme-color" content="#FFB7B7">
 	<!-- Windows Phone -->
-	<meta name="msapplication-navbutton-color" content="#e50914">
+	<meta name="msapplication-navbutton-color" content="#FFB7B7">
 	<!-- iOS Safari -->
-	<meta name="apple-mobile-web-app-status-bar-style" content="#e50914">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#FFB7B7">
 	<meta property="og:url"           content="<?= $og_url; ?>" />
   	<meta property="og:type"          content="website" />
   	<meta property="og:title"         content="<?= $title; ?>" />
@@ -184,11 +187,15 @@ if(isset($_GET['cari'])){
 			          	</ul>
 			        </li>
 		      	</ul>
-		      	<form class="navbar-form navbar-right" method="get" action="index.php?page=hento">
+		      	<form class="navbar-form navbar-right form-inline" method="get" action="index.php?page=hento">
 			        <div class="form-group">
-			          	<input type="text" class="form-control" name="cari" placeholder="Search">
+			          	<div class="input-group">
+				          	<input type="text" class="form-control" name="cari" placeholder="Search">
+				          	<div class="input-group-addon">
+	        					<button type="submit" class="btn btn-danger btn-cari"><i class="fa fa-search"></i></button>
+				          	</div>
+			          	</div>
 			        </div>
-        			<button type="submit" class="btn btn-danger"><i class="fa fa-search"></i></button>
       			</form>
 		    </div><!-- /.navbar-collapse -->
   		</div><!-- /.container-fluid -->

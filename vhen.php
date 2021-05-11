@@ -58,14 +58,19 @@
 	    margin: 15px;
 	    line-height: 21px;
 	}
+	@media (max-width: 800px) {
+		.img-prev{
+			margin: 20px auto;
+		}
+	}
 </style>
 <?php
 
 ?>
 <h2><?= $hen['title']; ?></h2>
-<div class="row hidden-xs">
-	<div class="col-xs-2"><img src="<?= $hen['img']; ?>" class="img-responsive"></div>
-	<div class="col-xs-10"><?= html_entity_decode($hen['ninfo']); ?><br><br><br></div>
+<div class="row">
+	<div class="col-xs-12 col-md-2"><img src="<?= $hen['img']; ?>" class="img-responsive img-prev"></div>
+	<div class="col-xs-12 col-md-10"><?= html_entity_decode($hen['ninfo']); ?><br><br><br></div>
 </div>
 
 <?= html_entity_decode($hen['sinop']); ?>

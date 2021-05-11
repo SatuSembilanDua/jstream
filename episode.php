@@ -18,7 +18,7 @@
 				<a href="<?= $link;?>" title="<?= $v['judul']; ?>">
 					<div class="poster-img">
 						<div class="img-list" style="background-image: url(<?= $img; ?>);" ></div>
-						<div class="see"><i class="fa fa-play"></i></div>
+						<!-- <div class="see"><i class="fa fa-play"></i></div> -->
 					</div>
 				</a>
 				<div class="film-judul">

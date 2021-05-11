@@ -35,7 +35,7 @@ body{
 .navbar-inverse 
 .navbar-nav>.active>a:hover {
     color: #fff;
-    background-color: #e50914;
+    background-color: #FFB7B7;
 }
 
 .body-main{
@@ -48,13 +48,13 @@ body{
 	color: #FFF;
 	margin: 20px -15px;
 	padding-left: 20px;
-	/* border-bottom: 3px solid #e50914; */
-	border-left: 5px solid #e50914;
+	/* border-bottom: 3px solid #FFB7B7; */
+	border-left: 5px solid #FFB7B7;
 
 }
 
 a{
-	color: #e50914;
+	color: #FFB7B7;
 }
 
 .table-list{
@@ -71,7 +71,7 @@ a{
 }
 
 .table-list>tbody>tr:hover {
-    background-color: #e50914;
+    background-color: #FFB7B7;
     color: #FFF;
 }
 .table-list>tbody>tr:hover td>a{
@@ -236,15 +236,15 @@ a:hover{
 }
 
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-    background-color: #e50914;
-    border-color: #e50914;
+    background-color: #FFB7B7;
+    border-color: #FFB7B7;
 }
 
 .pagination>li>a, .pagination>li>span {
-    color: #e50914;
+    color: #FFB7B7;
 }
 .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover{
-    color: #e50914;
+    color: #FFB7B7;
 }
 
 .idframe{
@@ -268,6 +268,10 @@ a:hover{
 	background-size: 100%;
 	background-repeat:no-repeat;
 	background-position: center center;
+	transition: all .2s ease-in;
+}
+.img-list:hover{
+	background-size: 150%;
 }
 .film-judul{
 	position: relative;
@@ -288,7 +292,7 @@ a:hover{
 	font-size: 24px;
     font-weight: 300;
     /*color: rgba(255, 255, 255, 1);*/
-    color:#e50914;
+    color:#FFB7B7;
 }
 .film-judul>h3{
 	font-weight: 500;
@@ -305,10 +309,10 @@ a:hover{
 	color: #FFF;
 }
 .film-judul>h3>a:hover{
-	color: #e50914;
+	color: #FFB7B7;
 }
 .see{
-	/*display: none;*/
+	display: none;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -322,7 +326,7 @@ a:hover{
 .fa-play{
 	color: #FFF;
 }
-a>.poster-img:hover .img-list{
+a>.poster-img:hover{
 	/*filter: blur(2px);*/
 }
 a>.poster-img:hover .see{
@@ -351,7 +355,7 @@ div.dataTables_wrapper div.dataTables_length label, div.dataTables_wrapper div.d
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     color: #FFF;
     cursor: default;
-    background-color: #e50914;
+    background-color: #FFB7B7;
     border: 1px solid #ddd;
 }
 
@@ -361,7 +365,7 @@ div.dataTables_wrapper div.dataTables_length label, div.dataTables_wrapper div.d
 .nav>li>a:focus, .nav>li>a:hover {
 	color: #FFF;
     text-decoration: none;
-    background-color: #e50914;
+    background-color: #FFB7B7;
 }
 
 .nav_bottom{
@@ -370,7 +374,7 @@ div.dataTables_wrapper div.dataTables_length label, div.dataTables_wrapper div.d
 
 .btn-danger2 {
     color: #fff;
-    background-color: #e50914;
+    background-color: #FFB7B7;
     border-color: #ac2925;
 }
 
@@ -429,7 +433,27 @@ video.idframe{
 	font-size: 5em;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+
+.navbar-form .input-group-addon{
+	padding: 0;
+	background-color: none;
+    border: none;
+}
+
+
+.btn-cari{
+	background-color: #FFB7B7;
+    border-color: #DB9D9D;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-cari.active, .btn-cari.focus, .btn-cari:active, .btn-cari:focus, .btn-cari:hover, .open>.dropdown-toggle.btn-cari{
+	background-color: #DB9D9D;
+    border-color: #BC8787;
+}
+
+@media (max-width: 800px) {
 	.body-main{
 		padding: 20px 20px;
 	}
@@ -451,11 +475,12 @@ video.idframe{
 	}
 
 	.see{
+		display: none;
 		height: 100px;
-		background: rgba(0, 0, 0, 0.5);
 		text-align: center;
 		font-size: 2.5em;
-		padding-top: 55px;
+		padding-top: 25px;
+		width: 95%;
 	}
 	.listinfo>ul{
 		padding-left: 10px;
@@ -467,8 +492,7 @@ video.idframe{
 		height: 250px;
 		overflow-y: scroll;
 	}
-}
-@media (min-width: 320px) and (max-width: 480px) {
+
 	.header-main{
 		padding: 0;
 		text-align: center;
